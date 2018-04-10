@@ -2,9 +2,14 @@
 ul{
   list-style: none;
 }
-.App {
-  text-align: center;
+a{
+  color: #333;
 }
+/*用户登录后tab*/
+.user-container{
+  display: flex
+}
+/**/
 .logo-container{
   font-size: 24px;
   height: 44px;
@@ -83,8 +88,9 @@ ul{
 
 }
 .image-card .ant-card-body .image-block{
-  flex: 1
+  flex: 1;
 }
+
 .image-block .custom-card h3{
   height: 18px;
   line-height: 18px;
@@ -98,6 +104,10 @@ ul{
 }
 .other-card{
   float: left;
+}
+/*newsdetail*/
+.article_aside{
+  margin-left: 20px;
 }
 .footer{
   text-align: center;

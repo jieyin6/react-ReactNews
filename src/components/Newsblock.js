@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
-import { Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../App.css'
 
 class Newsblock extends Component {
@@ -26,13 +26,13 @@ class Newsblock extends Component {
     
     let newList = news.length 
     ? news.map((newsItem, index) => 
-    /*
+    
         <li key={index}>
-          <Link to={`details/${newsItem.uniquekey}`} target="_blank">
+          <Link to={`/details/${newsItem.uniquekey}`} target="_blank">
             {newsItem.title}
           </Link>
-        </li> */
-        <li key={index}>{newsItem.title}</li>
+        </li> 
+       /* <li key={index}>{newsItem.title}</li>*/
     )
     : '没有加载到任何数据'
     return (

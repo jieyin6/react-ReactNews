@@ -38,13 +38,9 @@ class NewsImageblock extends Component {
     
     let newList = news.length 
     ? news.map((newsItem, index) => 
-    /*
-        <li key={index}>
-          <Link to={`details/${newsItem.uniquekey}`} target="_blank">
-            {newsItem.title}
-          </Link>
-        </li> */
-        <div key={index} className='image-block'>
+    
+        <Link key={index} to={`/details/${newsItem.uniquekey}`} target="_blank" className='image-block'>
+        <div >
           <div className='custom-image'>
             <img src={newsItem.thumbnail_pic_s} style={styleImage} alt='image'/>
           </div>
@@ -53,6 +49,7 @@ class NewsImageblock extends Component {
             <p>{newsItem.author_name}</p>
           </div>
         </div>
+        </Link>
     )
     : '没有加载到任何数据'
     return (

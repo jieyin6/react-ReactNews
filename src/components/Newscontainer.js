@@ -24,19 +24,18 @@ class NewsContainer extends Component {
             <div className='tabs-container'>
              <Tabs defaultActiveKey="1" className="tabs-news">
               <TabPane tab="头条新闻" key="1" className='tabs-product'>
-                <Newsblock type="top" count={22} width='100%' />
+                <Newsblock type="top" count={26} width='100%' />
               </TabPane>
               <TabPane tab="国际新闻" key="2">
-              <Newsblock type="guoji" count={22} />
+              <Newsblock type="guoji" count={26} />
               </TabPane>
               <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane>
             </Tabs>
-            <div className='other-card'>
-              <NewsImageblock type='yule' count={18} width='100%' imageWidth='132px' cardTitle='娱乐新闻' />
-              <NewsImageblock type='keji' count={18} width='100%' imageWidth='132px' cardTitle='科技新闻' />
-            </div>
            </div>
-           
+           <div className='other-card'>
+              <NewsImageblock type='yule' count={16} width='100%' imageWidth='132px' cardTitle='娱乐新闻' />
+              <NewsImageblock type='keji' count={16} width='100%' imageWidth='132px' cardTitle='科技新闻' />
+            </div>
           </Col>
           <Col span={2}></Col>
         </Row>

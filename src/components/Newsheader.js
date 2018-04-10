@@ -15,13 +15,23 @@ class Newsheader extends Component {
         key:'top',
         islogined:false,
         userName:'',
-        visible:false
+        visible:false,
+        userId:0,
+        action:'login'
     };
     //this.setModal = this.setModal.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  
+  componentWillMount(){
+    if(localStorage.userId !== ''){
+      this.setState({
+        islogined:true,
+        userName:localStorage.userName,
+        userId:localStorage.userId
+      })
+    }
+  }
   setModal(val) {
     this.setState({visible:val})
   }
@@ -42,24 +52,42 @@ class Newsheader extends Component {
     let formData = this.props.form.getFieldsValue()
     console.log(formData);
     fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName="+formData.r_username+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confrimpassword+"",myFetchOptions)
-    .then((res)=>{res.json()}).then((json)=>{
-        this.setState({userName:json.NickUserName,userId:json.userId})
+    .then(res => res.json()).then(json =>{
+      console.log(json);
+        this.setState({userName:json.NickUserName,userId:json.UserId})
+        localStorage.userId = json.UserId
+        localStorage.userName = json.NickUserName
     })
+    if(this.state.action == 'login'){
+      this.setState({islogined:true})
+    }
     message.info('注册成功')
     this.setModal(false)
+  }
+  handleTab(key) {
+    if(key == 1){
+      this.setState({action:'login'})
+    }else{
+      this.setState({action:'register'})
+    }
+  }
+  logout(){
+    localStorage.userId = ''
+    localStorage.userName = ''
+    this.setState({islogined:false})
   }
   render() {
       //接受页面的参数
     let { getFieldDecorator } = this.props.form
     let loginBtn = this.state.islogined ?
-      <Menu.Item key="user">
-      <Button icon="user">{this.state.userName}</Button>
+      <Menu.Item key="user" className="user-container">
+      <Button icon="user" style={{ marginTop: 7 }}>{this.state.userName}</Button>
       &nbsp;&nbsp;
-      <Link target='_blank'>
+      <Link to={'/'} target='_blank'>
         <Button type="dashed">个人中心</Button>
       </Link>
       &nbsp;&nbsp;
-      <Button type="primary">退出</Button>
+      <Button type="primary" style={{ marginTop: 7 }} onClick={this.logout.bind(this)}>退出</Button>
       </Menu.Item>
       :
       <Menu.Item key="login">
@@ -112,7 +140,7 @@ class Newsheader extends Component {
           onCancel={()=>this.setModal(false)}
           okText="确认"
         >
-          <Tabs defaultActiveKey="1" >
+          <Tabs defaultActiveKey="1" onChange={this.handleTab.bind(this)}>
           <TabPane tab="注册" key="1">
             <Form onSubmit={this.handleSubmit}>
               <FormItem label="用户名" >

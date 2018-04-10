@@ -34,10 +34,7 @@ class MobileHeader extends Component {
         let myFetchOptions = {
             method:'GET'
         }
-        console.log(this.props.form);
-        
         let formData = this.props.form.getFieldsValue()
-        console.log(formData);
         fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName="+formData.r_username+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confrimpassword+"",myFetchOptions)
         .then((res)=>{res.json()}).then((json)=>{
             this.setState({userName:json.NickUserName,userId:json.userId})
