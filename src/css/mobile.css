@@ -1,0 +1,35 @@
+html{
+    font-size: 50px;
+    width: 100%;
+}
+
+.mobile-header{
+    display: flex;
+    background-color: #f6f6f6;
+}
+
+.mobile-header header{
+    flex: 1;
+    border-bottom: 1px solid #2db7f5;
+}
+
+.mobile-header header img{
+    height: 50px;
+}
+
+.mobile-header header span{
+    font-size: 35px;
+    vertical-align: top;
+    padding-left: 10px;
+    color: #2db7f5;
+}
+.mobile-header .header-right{
+    position: absolute;
+    top: 27px;
+    right: 10px;
+    transform: translateY(-14px);
+}
+
+.mobile-footer{
+    text-align: center;
+}
