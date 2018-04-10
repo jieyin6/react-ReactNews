@@ -79,28 +79,28 @@ class Newsheader extends Component {
               mode="horizontal"
             >
                <Menu.Item key="top">
-                 <Icon type="mail" />头条
+                 <Icon type="appstore" />头条
                </Menu.Item>
                <Menu.Item key="shehui">
-                 <Icon type="mail" />社会
+                 <Icon type="appstore" />社会
                </Menu.Item>
                <Menu.Item key="guonei">
-                <Icon type="mail" />国内
+                <Icon type="appstore" />国内
                </Menu.Item>
                <Menu.Item key="guoji">
-                <Icon type="mail" />国际
+                <Icon type="appstore" />国际
                </Menu.Item>
                <Menu.Item key="yule">
-                 <Icon type="mail" />娱乐
+                 <Icon type="appstore" />娱乐
                </Menu.Item>
                <Menu.Item key="tiyu">
-                 <Icon type="mail" />体育
+                 <Icon type="appstore" />体育
                </Menu.Item>
                <Menu.Item key="keji">
-                 <Icon type="mail" />科技
+                 <Icon type="appstore" />科技
                </Menu.Item>
                <Menu.Item key="时尚">
-                <Icon type="mail" />时尚
+                <Icon type="appstore" />时尚
                </Menu.Item>
                {loginBtn}
             </Menu>

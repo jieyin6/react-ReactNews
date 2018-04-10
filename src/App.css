@@ -1,5 +1,7 @@
 /*@import '~antd/dist/antd.css';*/
-
+ul{
+  list-style: none;
+}
 .App {
   text-align: center;
 }
@@ -55,6 +57,47 @@
 .top-news-list a {
   line-height: 22px !important;
   color: #666 !important;
+}
+.news-list{
+  width: 412px;
+  padding: 0;
+}
+.news-list li{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tabs-container .ant-tabs-bar{
+  margin: 0;
+  border: none;
+}
+/*newsImageblock*/
+.image-card{
+ 
+  margin-top: 20px;
+}
+.image-card .ant-card-body{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 20px 5px 20px;
+
+}
+.image-card .ant-card-body .image-block{
+  flex: 1
+}
+.image-block .custom-card h3{
+  height: 18px;
+  line-height: 18px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.image-block .custom-card p{
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-align: left;
+}
+.other-card{
+  float: left;
 }
 .footer{
   text-align: center;
