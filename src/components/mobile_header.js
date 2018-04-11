@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Icon, Button, Row, Col, Tabs, Modal, Form, Input, message } from 'antd';
+import { Link } from 'react-router-dom'
 import '../css/mobile.css'
 const TabPane = Tabs.TabPane;
 const FormItem = Form.Item;
@@ -17,10 +18,16 @@ class MobileHeader extends Component {
         //this.setModal = this.setModal.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmitLogin = this.handleSubmitLogin.bind(this)
       }
       
       setModal(val) {
-        this.setState({visible:val})
+        if(localStorage.userId !== ''){
+          this.setState({visible:false})
+        }else{
+          this.setState({visible:val})
+        }
+        
       }
       handleClick(e) {
         if(e.key === 'login'){
@@ -34,23 +41,49 @@ class MobileHeader extends Component {
         let myFetchOptions = {
             method:'GET'
         }
+        console.log(this.props.form);
         let formData = this.props.form.getFieldsValue()
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName="+formData.r_username+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confrimpassword+"",myFetchOptions)
-        .then((res)=>{res.json()}).then((json)=>{
-            this.setState({userName:json.NickUserName,userId:json.userId})
+        console.log(formData);
+        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username="+formData.r_username+"&password="+formData.r_password+"&r_userName="+formData.r_username+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confrimpassword+"",myFetchOptions)
+        .then(res => res.json()).then(json =>{
+          console.log(json);
+          
         })
         message.info('注册成功')
-        this.setModal(false)
+       this.setModal(false)
+      }
+      handleSubmitLogin(e) {
+        e.preventDefault()
+        let myFetchOptions = {
+            method:'GET'
+        }
+        console.log(this.props.form);
+        let formData = this.props.form.getFieldsValue()
+        console.log(formData);
+        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=login&username="+formData.username+"&password="+formData.password+"&r_userName="+formData.r_username+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confrimpassword+"",myFetchOptions)
+        .then(res => res.json()).then(json =>{
+          console.log(json);
+          this.setState({islogined:true,userName:json.NickUserName,userId:json.UserId})
+          localStorage.userId = json.UserId
+          localStorage.username = json.NickUserName
+        })
+        message.info('登录成功')
+       this.setModal(false)
       }
   render() {
       let {getFieldDecorator} = this.props.form
+      let icon = this.state.islogined ?
+        <Icon type="mail"></Icon>
+        : <Icon type="setting"></Icon>
     return (
       <div className="mobile-header">
         <header>
-            <img alt="logo"/>
+            <img alt="logo" src="../images/logo.png"/>
             <span>ReactNews</span>
             <div className="header-right" onClick={()=>this.setModal(true)}>
-              <Icon type="setting"></Icon>
+            <Link to={'/usercenter'}>
+              {icon}
+            </Link>
             </div>
             <Modal
           title="用户中心"
@@ -92,7 +125,7 @@ class MobileHeader extends Component {
             </Form>
           </TabPane>
           <TabPane tab="登录" key="2">
-            <Form >
+            <Form onSubmit={this.handleSubmit}>
               <FormItem label="用户名"  >
                 <Input placeholder="请输入用户名" />
               </FormItem>
@@ -100,7 +133,7 @@ class MobileHeader extends Component {
                 <Input type="password" placeholder="请输入密码" />
               </FormItem>
               <FormItem >
-                <Button type="primary">登录</Button>
+                <Button type="primary" htmlType="submit">登录</Button>
               </FormItem>
             </Form>
           </TabPane>

@@ -14,10 +14,10 @@ class NewsContainer extends Component {
           <Col span={20} className="news-container">
             <div className="left-container">
             <Carousel autoplay className="slider">
-              <div><img alt="1"/></div>
-              <div><img alt="1"/></div>
-              <div><img alt="1"/></div>
-              <div><img alt="1"/></div>
+              <div><img src="../images/carousel_1.jpg"/></div>
+              <div><img src="../images/carousel_2.jpg"/></div>
+              <div><img src="../images/carousel_3.jpg"/></div>
+              <div><img src="../images/carousel_4.jpg"/></div>
             </Carousel>
             <NewsImageblock type='guoji' count={9} width='400px' imageWidth='112px' cardTitle='国际新闻' />
             </div>
@@ -29,8 +29,10 @@ class NewsContainer extends Component {
               <TabPane tab="国际新闻" key="2">
               <Newsblock type="guoji" count={26} />
               </TabPane>
-              <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane>
             </Tabs>
+           </div>
+           <div className="right-container">
+             <NewsImageblock type='guonei' count={8} width='280px' imageWidth='112px' cardTitle='国内新闻'></NewsImageblock>
            </div>
            <div className='other-card'>
               <NewsImageblock type='yule' count={16} width='100%' imageWidth='132px' cardTitle='娱乐新闻' />

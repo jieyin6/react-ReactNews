@@ -16,18 +16,19 @@ class Newsheader extends Component {
         islogined:false,
         userName:'',
         visible:false,
-        userId:0,
+        userId:'',
         action:'login'
     };
     //this.setModal = this.setModal.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmitLogin = this.handleSubmitLogin.bind(this)
   }
   componentWillMount(){
     if(localStorage.userId !== ''){
       this.setState({
         islogined:true,
-        userName:localStorage.userName,
+        userName:localStorage.username,
         userId:localStorage.userId
       })
     }
@@ -48,32 +49,44 @@ class Newsheader extends Component {
         method:'GET'
     }
     console.log(this.props.form);
-    
     let formData = this.props.form.getFieldsValue()
     console.log(formData);
-    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName="+formData.r_username+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confrimpassword+"",myFetchOptions)
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username="+formData.r_username+"&password="+formData.r_password+"&r_userName="+formData.r_username+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confrimpassword+"",myFetchOptions)
     .then(res => res.json()).then(json =>{
       console.log(json);
-        this.setState({userName:json.NickUserName,userId:json.UserId})
-        localStorage.userId = json.UserId
-        localStorage.userName = json.NickUserName
+      
     })
-    if(this.state.action == 'login'){
-      this.setState({islogined:true})
-    }
     message.info('注册成功')
-    this.setModal(false)
+   this.setModal(false)
+  }
+  handleSubmitLogin(e) {
+    e.preventDefault()
+    let myFetchOptions = {
+        method:'GET'
+    }
+    console.log(this.props.form);
+    let formData = this.props.form.getFieldsValue()
+    console.log(formData);
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=login&username="+formData.username+"&password="+formData.password+"&r_userName="+formData.r_username+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confrimpassword+"",myFetchOptions)
+    .then(res => res.json()).then(json =>{
+      console.log(json);
+      this.setState({islogined:true,userName:json.NickUserName,userId:json.UserId})
+      localStorage.userId = json.UserId
+      localStorage.username = json.NickUserName
+    })
+    message.info('登录成功')
+   this.setModal(false)
   }
   handleTab(key) {
-    if(key == 1){
-      this.setState({action:'login'})
-    }else{
+    if(key === 1){
       this.setState({action:'register'})
+    }else{
+      this.setState({action:'login'})
     }
   }
   logout(){
     localStorage.userId = ''
-    localStorage.userName = ''
+    localStorage.username = ''
     this.setState({islogined:false})
   }
   render() {
@@ -83,7 +96,7 @@ class Newsheader extends Component {
       <Menu.Item key="user" className="user-container">
       <Button icon="user" style={{ marginTop: 7 }}>{this.state.userName}</Button>
       &nbsp;&nbsp;
-      <Link to={'/'} target='_blank'>
+      <Link to={'/usercenter'} target='_blank'>
         <Button type="dashed">个人中心</Button>
       </Link>
       &nbsp;&nbsp;
@@ -97,10 +110,11 @@ class Newsheader extends Component {
       <div className="news-header">
         <Row>
           <Col span={2}></Col>
-          <Col span={2} className='logo-container'>
+          <Col span={3} className='logo-container'>
+            <img src="../images/logo.png"/>
             <span>ReactNews</span>
           </Col>
-          <Col span={18}>
+          <Col span={17}>
             <Menu
               onClick={this.handleClick}
               selectedKeys={[this.state.key]}
@@ -140,7 +154,7 @@ class Newsheader extends Component {
           onCancel={()=>this.setModal(false)}
           okText="确认"
         >
-          <Tabs defaultActiveKey="1" onChange={this.handleTab.bind(this)}>
+          <Tabs  defaultActiveKey="1" onChange={this.handleTab.bind(this)}>
           <TabPane tab="注册" key="1">
             <Form onSubmit={this.handleSubmit}>
               <FormItem label="用户名" >
@@ -168,20 +182,28 @@ class Newsheader extends Component {
                 
               </FormItem>
               <FormItem >
-                <Button type="primary" htmlType="submit" >注册</Button>
+                <Button type="primary" htmlType="submit">注册</Button>
               </FormItem>
             </Form>
           </TabPane>
           <TabPane tab="登录" key="2">
-            <Form >
+            <Form onSubmit={this.handleSubmitLogin}>
               <FormItem label="用户名"  >
-                <Input placeholder="请输入用户名" />
+              {
+                getFieldDecorator('username')(
+                  <Input placeholder="请输入用户名" />
+                )
+              }
               </FormItem>
               <FormItem label="密码"  >
-                <Input type="password" placeholder="请输入密码" />
+              {
+                getFieldDecorator('password')(
+                  <Input type="password" placeholder="请输入密码" />
+                )
+              }
               </FormItem>
               <FormItem >
-                <Button type="primary">登录</Button>
+                <Button type="primary"  htmlType="submit">登录</Button>
               </FormItem>
             </Form>
           </TabPane>

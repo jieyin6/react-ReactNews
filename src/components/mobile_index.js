@@ -14,10 +14,10 @@ class MobileIndex extends Component {
         <Tabs defaultActiveKey="1">
           <TabPane tab={<span><Icon type="appstore" />头条</span>} key="1">
             <Carousel autoplay className="slider">
-              <div><img alt="1"/></div>
-              <div><img alt="1"/></div>
-              <div><img alt="1"/></div>
-              <div><img alt="1"/></div>
+              <div><img src="../images/carousel_1.jpg"/></div>
+              <div><img src="../images/carousel_2.jpg"/></div>
+              <div><img src="../images/carousel_3.jpg"/></div>
+              <div><img src="../images/carousel_4.jpg"/></div>
             </Carousel>
             <MobileBlock type="top" count={20}/>
           </TabPane>

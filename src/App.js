@@ -5,7 +5,10 @@ import NewsIndex from './components/Newsindex'
 import MobileIndex from './components/mobile_index'
 import NewsDetail from './components/NewsDetail'
 import MobileDetail from './components/mobile_detail'
+import NewsUsercenter from './components/NewsUsercenter'
+import MObileUsercenter from './components/mobile_usercenter'
 import './App.css';
+import MobileUsercenter from './components/mobile_usercenter';
 
 class App extends Component {
   render() {
@@ -16,6 +19,7 @@ class App extends Component {
           <div>
             <Route exact path="/" component={NewsIndex}/>
             <Route path="/details/:uniquekey" component={NewsDetail} />
+            <Route path="/usercenter" component={NewsUsercenter} />
           </div>
          </BrowserRouter>
         </MediaQuery>
@@ -24,6 +28,7 @@ class App extends Component {
           <div>
             <Route exact path="/" component={MobileIndex}/>
             <Route path="/details/:uniquekey" component={MobileDetail} />
+            <Route path="/usercenter" component={MobileUsercenter} />
           </div>
          </BrowserRouter>
         </MediaQuery>
