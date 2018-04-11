@@ -14,10 +14,10 @@ class NewsContainer extends Component {
           <Col span={20} className="news-container">
             <div className="left-container">
             <Carousel autoplay className="slider">
-              <div><img src="../images/carousel_1.jpg"/></div>
-              <div><img src="../images/carousel_2.jpg"/></div>
-              <div><img src="../images/carousel_3.jpg"/></div>
-              <div><img src="../images/carousel_4.jpg"/></div>
+              <div><img src={require('../images/carousel_1.jpg')} alt='1'/></div>
+              <div><img src={require('../images/carousel_2.jpg')} alt='2'/></div>
+              <div><img src={require('../images/carousel_3.jpg')} alt='3'/></div>
+              <div><img src={require('../images/carousel_4.jpg')} alt='4'/></div>
             </Carousel>
             <NewsImageblock type='guoji' count={9} width='400px' imageWidth='112px' cardTitle='国际新闻' />
             </div>

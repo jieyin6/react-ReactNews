@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Col, Row, BackTop, Tabs, Upload, Icon, Modal,Card} from 'antd';
-import { Router, Route, Link} from 'react-router-dom';
 import NewsHeader from './Newsheader'
 import NewsFooter from './Newsfooter'
 const TabPane = Tabs.TabPane;

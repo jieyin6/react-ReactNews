@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Icon, Button, Row, Col, Tabs, Modal, Form, Input, message } from 'antd';
+import { Icon, Button,Tabs, Modal, Form, Input, message } from 'antd';
 import { Link } from 'react-router-dom'
 import '../css/mobile.css'
 const TabPane = Tabs.TabPane;
@@ -78,7 +78,7 @@ class MobileHeader extends Component {
     return (
       <div className="mobile-header">
         <header>
-            <img alt="logo" src="../images/logo.png"/>
+            <img  src={require('../images/logo.png')} alt='logo'/>
             <span>ReactNews</span>
             <div className="header-right" onClick={()=>this.setModal(true)}>
             <Link to={'/usercenter'}>

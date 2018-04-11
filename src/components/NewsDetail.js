@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Col, Row, BackTop } from 'antd';
-import { Router, Route, Link} from 'react-router-dom';
 import NewsImageblock from './NewsImageblock'
 import NewsHeader from './Newsheader'
 import NewsFooter from './Newsfooter'

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Row, Col, Form, Input,Card, notification, Icon } from 'antd';
-import { getFileItem } from 'antd/lib/upload/utils';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
@@ -29,6 +28,7 @@ class Comment extends Component {
             if(index <= 20){
                 arr.push(item)
             }
+            return arr
         })
         this.setState({comment:arr})
     })

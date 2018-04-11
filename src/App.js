@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import {Route, Link , BrowserRouter} from 'react-router-dom'
+import {Route, BrowserRouter} from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import NewsIndex from './components/Newsindex'
 import MobileIndex from './components/mobile_index'
 import NewsDetail from './components/NewsDetail'
 import MobileDetail from './components/mobile_detail'
 import NewsUsercenter from './components/NewsUsercenter'
-import MObileUsercenter from './components/mobile_usercenter'
 import './App.css';
 import MobileUsercenter from './components/mobile_usercenter';
 

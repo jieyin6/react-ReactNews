@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { Menu, Icon, Button, Row, Col, Tabs, Modal, Form, Input, message } from 'antd';
-import { getFileItem } from 'antd/lib/upload/utils';
 const TabPane = Tabs.TabPane;
 const FormItem = Form.Item;
 
@@ -111,7 +110,7 @@ class Newsheader extends Component {
         <Row>
           <Col span={2}></Col>
           <Col span={3} className='logo-container'>
-            <img src="../images/logo.png"/>
+            <img src={require('../images/logo.png')} alt='logo'/>
             <span>ReactNews</span>
           </Col>
           <Col span={17}>

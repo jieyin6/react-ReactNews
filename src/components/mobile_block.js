@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
-import { Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../css/mobile.css'
 
 class MobileBlock extends Component {
@@ -27,7 +27,7 @@ class MobileBlock extends Component {
      <Link key={index} to={`/details/${newsItem.uniquekey}`} >
         <section className="mobile_block" >
           <div className="m_article_img">
-            <img src={newsItem.thumbnail_pic_s} />
+            <img src={newsItem.thumbnail_pic_s} alt="article"/>
           </div>
           <div className="m_article_info">
             <div className='m_article_info_c'>

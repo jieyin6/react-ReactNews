@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Col, Row, BackTop } from 'antd';
-import { Router, Route, Link} from 'react-router-dom';
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'
 import Comment from './comment'

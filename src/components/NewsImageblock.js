@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
-import { Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../App.css'
 
 class NewsImageblock extends Component {
@@ -42,7 +42,7 @@ class NewsImageblock extends Component {
         <Link key={index} to={`/details/${newsItem.uniquekey}`} target="_blank" className='image-block'>
         <div >
           <div className='custom-image'>
-            <img src={newsItem.thumbnail_pic_s} style={styleImage} alt='image'/>
+            <img src={newsItem.thumbnail_pic_s} style={styleImage} alt='img'/>
           </div>
           <div className="custom-card">
             <h3 style={styleH3}>{newsItem.title}</h3>
